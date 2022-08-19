@@ -1,0 +1,14 @@
+on: workflow_dispatch
+
+jobs:
+  do-stuff:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Add a commit to the project
+        run: |
+          git config user.name "My manual workflow bot"
+          git config user.email "workflow-bot@example.com"
+          git commit --allow-empty -m "An empty commit made by the manual workflow at $(date)"
+          git push origin master 
+
